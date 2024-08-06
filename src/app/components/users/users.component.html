@@ -1,0 +1,33 @@
+<h1 class="m-5">Users</h1>
+<div class="row justify-content-center">
+
+    <div class="input-group flex-nowrap w-50">
+        <div class="input-group-prepend">
+          <span  class="input-group-text bgGray" id="addon-wrapping">
+            Search
+          </span>
+        </div>
+        <input (keyup)="search()" [(ngModel)]="searchValue" type="text" class="form-control border-1" placeholder="Username" aria-label="Username" aria-describedby="addon-wrapping">
+      </div>
+      <!-- <h3>{{searchValue}}</h3> -->
+</div>
+<div class="container-fluid">
+    <div class="row justify-content-evenly">
+        @for (user of filteredUsers; track $index) {
+            <div class="card bgGray col-3 m-5" >
+                <img [src]="user.image" class="card-img-top w-50 mx-auto my-4 rounded-circle border border-secondary" alt="...">
+                <div class="card-body text-center">
+                  <p class="card-text">{{user.username}}
+                </p>
+                @if (user.is_verified) {
+                    <i class="material-symbols-outlined">
+                    verified
+                    </i>
+                }
+                  <p class="card-text">{{user.email}}</p>
+                  <p class="card-text">{{user.phone}}</p>
+                </div>
+            </div>
+        }
+    </div>
+</div>
